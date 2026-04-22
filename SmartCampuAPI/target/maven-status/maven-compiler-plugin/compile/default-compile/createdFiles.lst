@@ -1,0 +1,5 @@
+com\smartcampus\smartcampuapi\model\ErrorResponse.class
+com\smartcampus\smartcampuapi\resource\DiscoveryResource.class
+com\smartcampus\smartcampuapi\model\Room.class
+com\smartcampus\smartcampuapi\resource\RoomResource.class
+com\smartcampus\smartcampuapi\config\ApplicationConfig.class
