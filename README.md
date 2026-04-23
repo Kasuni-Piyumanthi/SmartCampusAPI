@@ -21,9 +21,13 @@ http://localhost:8080/SmartCampuAPI/api/v1
 
 📂 Project Structure
 com.smartcampus.smartcampuapi
+
 │
+
 ├── model        # Data models (Room, Sensor, SensorReading, ErrorResponse)
+
 ├── resource     # REST API endpoints
+
 ├── config       # Application configuration (JAX-RS setup)
 
 
