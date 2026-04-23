@@ -17,9 +17,11 @@ JSON (Data Format)
 NetBeans (IDE)
 
 🌐 Base URL
+
 http://localhost:8080/SmartCampuAPI/api/v1
 
 📂 Project Structure
+
 com.smartcampus.smartcampuapi
 
 │
@@ -31,16 +33,20 @@ com.smartcampus.smartcampuapi
 ├── config       # Application configuration (JAX-RS setup)
 
 
+
 🧱 Features
 
 🏢 Room Management
+
 Create, retrieve, and delete rooms
 Prevent deletion of rooms with assigned sensors
 
 🌡️ Sensor Management
+
 Create and retrieve sensors
 
 Filter sensors by:
+
 Type
 Status
 
@@ -60,6 +66,7 @@ Proper HTTP status codes
 🔗 API Endpoints
 
 🏢 Rooms
+
 Method	Endpoint	Description
 POST	/rooms	Create a room
 GET	/rooms	Get all rooms
@@ -67,21 +74,25 @@ GET	/rooms/{id}	Get room by ID
 DELETE	/rooms/{id}	Delete a room
 
 🌡️ Sensors
+
 Method	Endpoint	Description
 POST	/sensors	Create a sensor
 GET	/sensors	Get all sensors
 GET	/sensors/{id}	Get sensor by ID
 
 🔍 Filtering
+
 GET /sensors?type=temperature
 GET /sensors?status=active
 
 🔗 Sub-Resources
+
 Method	Endpoint	Description
 POST	/rooms/{roomId}/sensors/{sensorId}	Assign sensor to room
 GET	/rooms/{roomId}/sensors	Get sensors in room
 
 📊 Sensor Readings
+
 Method	Endpoint	Description
 POST	/sensors/{id}/readings	Add sensor reading
 GET	/sensors/{id}/readings	Get sensor readings
@@ -101,6 +112,7 @@ GET	/sensors/{id}/readings	Get sensor readings
 }
 
 📊 HTTP Status Codes
+
 Code	Meaning
 200	OK (Successful request)
 201	Created (Resource created)
