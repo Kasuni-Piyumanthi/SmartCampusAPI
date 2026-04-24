@@ -1,116 +1,106 @@
 Smart Campus REST API
-
 Overview
-The Smart Campus REST API is a Java-based web application developed using JAX-RS (Jersey) and deployed on Apache Tomcat.
-It provides a RESTful interface to manage campus rooms, sensors, and real-time sensor readings.
 
-The system demonstrates core REST principles including CRUD operations, filtering, sub-resource relationships, validation, and structured error handling.
+The Smart Campus REST API is a Java-based RESTful web application developed using JAX-RS (Jersey) and deployed on Apache Tomcat.
+
+This system is designed to manage rooms, sensors, and sensor readings within a campus environment. It demonstrates core RESTful concepts such as CRUD operations, filtering, sub-resource relationships, validation, and error handling.
 
 Technologies Used
 
-Java (JDK 8+)
-Maven (Project Management)
+Java (JDK 8 or higher)
+Maven
 JAX-RS (Jersey)
-Apache Tomcat (Deployment Server)
-JSON (Data Format)
-NetBeans (IDE)
+Apache Tomcat
+JSON
 
 Base URL
+
 http://localhost:8080/SmartCampuAPI/api/v1
 
-Project Structure
-com.smartcampus.smartcampuapi
+Build and Run Instructions
+Clone the repository
+git clone https://github.com/Kasuni-Piyumanthi/SmartCampusAPI.git
+Navigate to the project directory
+cd SmartCampusAPI
+Build the project using Maven
+mvn clean install
+Deploy to Apache Tomcat
+Copy the generated WAR file from:
+target/SmartCampuAPI-1.0-SNAPSHOT.war
 
-model → Data models (Room, Sensor, SensorReading, ErrorResponse)
-resource → REST API endpoints
-config → Application configuration
+Paste it into the Tomcat webapps directory
 
-Features
-
-Room Management
-
-Create, retrieve, and delete rooms
-Prevent deletion of rooms with assigned sensors
-
-Sensor Management
-
-Create and retrieve sensors
-Filter sensors by type and status
-
-Sub-Resources
-
-Assign sensors to rooms
-Retrieve sensors within a room
-
-Sensor Readings
-
-Add real-time sensor readings
-Retrieve readings for a specific sensor
-
-Error Handling
-
-Structured JSON error responses
-Proper HTTP status codes
-
+Start the Tomcat server
+Open in browser
+http://localhost:8080/SmartCampuAPI/
+Verify the API
+http://localhost:8080/SmartCampuAPI/api/v1
 API Endpoints
 
 Rooms
-POST /rooms → Create a room
-GET /rooms → Get all rooms
-GET /rooms/{id} → Get room by ID
-DELETE /rooms/{id} → Delete a room
+POST /rooms
+GET /rooms
+GET /rooms/{id}
+DELETE /rooms/{id}
 
 Sensors
-POST /sensors → Create a sensor
-GET /sensors → Get all sensors
-GET /sensors/{id} → Get sensor by ID
+POST /sensors
+GET /sensors
+GET /sensors/{id}
 
 Filtering
 GET /sensors?type=temperature
 GET /sensors?status=active
 
 Sub-Resources
-POST /rooms/{roomId}/sensors/{sensorId} → Assign sensor to room
-GET /rooms/{roomId}/sensors → Get sensors in room
+POST /rooms/{roomId}/sensors/{sensorId}
+GET /rooms/{roomId}/sensors
 
 Sensor Readings
-POST /sensors/{id}/readings → Add sensor reading
-GET /sensors/{id}/readings → Get sensor readings
+POST /sensors/{id}/readings
+GET /sensors/{id}/readings
 
-Example Request (Create Sensor)
-{
-"id": "S1",
-"type": "temperature",
-"status": "active"
-}
+Sample curl Commands
 
-Example Request (Sensor Reading)
-{
-"id": "READ-1",
-"timestamp": 1710000000,
-"value": 26.5
-}
+Create a Room
+curl -X POST http://localhost:8080/SmartCampuAPI/api/v1/rooms
+ -H "Content-Type: application/json" -d "{"id":"R1","name":"Lecture Hall","capacity":100}"
+
+Get All Rooms
+curl http://localhost:8080/SmartCampuAPI/api/v1/rooms
+
+Create a Sensor
+curl -X POST http://localhost:8080/SmartCampuAPI/api/v1/sensors
+ -H "Content-Type: application/json" -d "{"id":"S1","type":"temperature","status":"active"}"
+
+Filter Sensors
+curl "http://localhost:8080/SmartCampuAPI/api/v1/sensors?type=temperature"
+
+Assign Sensor to Room
+curl -X POST http://localhost:8080/SmartCampuAPI/api/v1/rooms/R1/sensors/S1
+
+Add Sensor Reading
+curl -X POST http://localhost:8080/SmartCampuAPI/api/v1/sensors/S1/readings
+ -H "Content-Type: application/json" -d "{"id":"READ-1","timestamp":1710000000,"value":26.5}"
+
+Get Sensor Readings
+curl http://localhost:8080/SmartCampuAPI/api/v1/sensors/S1/readings
 
 HTTP Status Codes
-200 → OK (Successful request)
-201 → Created (Resource created)
-400 → Bad Request (Invalid input)
-404 → Not Found (Resource not found)
 
-Testing
-The API was tested using Postman including:
+200 OK – Successful request
+201 Created – Resource created
+400 Bad Request – Invalid input
+404 Not Found – Resource not found
 
-CRUD operations
-Filtering
-Sub-resource handling
-Error handling
+Features
 
-Deployment
-The application is deployed on Apache Tomcat and accessed via:
-http://localhost:8080/SmartCampuAPI/
-
-Conclusion
-This project demonstrates a complete RESTful API including CRUD operations, filtering, sub-resources, validation, and error handling using Java and Tomcat.
+Room management with validation
+Sensor management with filtering support
+Sub-resource relationships between rooms and sensors
+Sensor reading management
+Structured error handling
 
 Author
+
 Kasuni Jayasekara
