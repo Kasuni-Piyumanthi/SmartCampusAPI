@@ -1,4 +1,5 @@
 Smart Campus REST API
+
 Overview
 
 The Smart Campus REST API is a Java-based RESTful web application developed using JAX-RS (Jersey) and deployed on Apache Tomcat.
