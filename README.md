@@ -135,6 +135,6 @@ curl http://localhost:8080/SmartCampuAPI/api/v1/sensors/S1/readings
 
 ---
 
-## 👤 Author
+##  Author
 Kasuni Jayasekara  
-Computer Science Undergraduate
+
